@@ -1,0 +1,14 @@
+# ninja log v7
+39	683	7987486004591344	CMakeFiles/fractal-julia.dir/Debug/fractal_serial.cpp.obj	23b936d90bcd0b54
+28	2457	7987490390643683	CMakeFiles/fractal-julia.dir/Debug/main.cpp.obj	cef37c21bd152e24
+25	2247	7987501408393142	Debug/fractal-julia.exe	ecef6d3676a68691
+16	567	7996591360729328	CMakeFiles/impl-Debug.ninja	aef7ad804dd29ab3
+16	567	7996591360743380	build-Debug.ninja	aef7ad804dd29ab3
+16	567	7996591360755654	CMakeFiles/impl-Release.ninja	aef7ad804dd29ab3
+16	567	7996591360768251	build-Release.ninja	aef7ad804dd29ab3
+16	567	7996591360768251	CMakeFiles/impl-RelWithDebInfo.ninja	aef7ad804dd29ab3
+16	567	7996591360798606	build-RelWithDebInfo.ninja	aef7ad804dd29ab3
+16	567	7996591360715149	build.ninja	aef7ad804dd29ab3
+16	567	7996591360645544	C:/tools/prog-paralela/fractal-julia/build/cmake_install.cmake	aef7ad804dd29ab3
+118	564	7987453574588924	CMakeFiles/fractal-julia.dir/Debug/palette.cpp.obj	32cede40ea7675ac
+29	1230	7987486004488690	CMakeFiles/fractal-julia.dir/Debug/fractal_simd.cpp.obj	76e170b079073373
