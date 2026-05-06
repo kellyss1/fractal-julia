@@ -15,7 +15,6 @@
 		[
 			"_add_executable",
 			"add_executable",
-			"target_link_options",
 			"target_link_libraries",
 			"add_custom_command"
 		],
@@ -49,12 +48,6 @@
 			},
 			{
 				"command" : 3,
-				"file" : 1,
-				"line" : 26,
-				"parent" : 0
-			},
-			{
-				"command" : 4,
 				"file" : 0,
 				"line" : 626,
 				"parent" : 1
@@ -69,23 +62,23 @@
 	"compileDependencies" : 
 	[
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "fmt::fmt::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "SFML::Network::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "SFML::System::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "SFML::Graphics::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "SFML::Window::@6890427a1f51a3e7e1df"
 		}
 	],
@@ -95,20 +88,20 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -mavx2 -g"
+					"fragment" : " -mavx2 -fopenmp -g"
 				}
 			],
 			"defines" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 3,
 					"define" : "FMT_SHARED"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include"
 				}
@@ -129,41 +122,31 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-mavx2 -g",
+				"fragment" : "-mavx2 -fopenmp -g",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "-static-libgcc",
-				"role" : "flags"
-			},
-			{
-				"backtrace" : 3,
-				"fragment" : "-static-libstdc++",
-				"role" : "flags"
-			},
-			{
-				"backtrace" : 4,
 				"fragment" : "C:\\tools\\vcpkg-2026.03.18\\installed\\x64-mingw-dynamic\\debug\\lib\\libfmtd.dll.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 3,
 				"fragment" : "C:\\tools\\vcpkg-2026.03.18\\installed\\x64-mingw-dynamic\\debug\\lib\\libsfml-network-d.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 3,
 				"fragment" : "C:\\tools\\vcpkg-2026.03.18\\installed\\x64-mingw-dynamic\\debug\\lib\\libsfml-graphics-d.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 3,
 				"fragment" : "C:\\tools\\vcpkg-2026.03.18\\installed\\x64-mingw-dynamic\\debug\\lib\\libsfml-window-d.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 3,
 				"fragment" : "C:\\tools\\vcpkg-2026.03.18\\installed\\x64-mingw-dynamic\\debug\\lib\\libsfml-system-d.a",
 				"role" : "libraries"
 			},
@@ -177,23 +160,23 @@
 	"linkLibraries" : 
 	[
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "fmt::fmt::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "SFML::Network::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "SFML::System::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "SFML::Graphics::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "SFML::Window::@6890427a1f51a3e7e1df"
 		}
 	],
@@ -202,7 +185,7 @@
 	"orderDependencies" : 
 	[
 		{
-			"backtrace" : 5,
+			"backtrace" : 4,
 			"id" : "fractal-julia::@6890427a1f51a3e7e1df"
 		}
 	],

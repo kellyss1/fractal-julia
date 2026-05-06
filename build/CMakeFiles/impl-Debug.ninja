@@ -47,7 +47,7 @@ build CMakeFiles/fractal-julia.dir/Debug/palette.cpp.obj: CXX_COMPILER__fractal-
   CONFIG = Debug
   DEFINES = -DFMT_SHARED -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles\fractal-julia.dir\Debug\palette.cpp.obj.d
-  FLAGS = -mavx2 -g
+  FLAGS = -mavx2 -fopenmp -g
   INCLUDES = -isystem C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\Debug
   OBJECT_FILE_DIR = CMakeFiles\fractal-julia.dir\Debug
@@ -57,7 +57,7 @@ build CMakeFiles/fractal-julia.dir/Debug/fractal_simd.cpp.obj: CXX_COMPILER__fra
   CONFIG = Debug
   DEFINES = -DFMT_SHARED -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles\fractal-julia.dir\Debug\fractal_simd.cpp.obj.d
-  FLAGS = -mavx2 -g
+  FLAGS = -mavx2 -fopenmp -g
   INCLUDES = -isystem C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\Debug
   OBJECT_FILE_DIR = CMakeFiles\fractal-julia.dir\Debug
@@ -67,7 +67,7 @@ build CMakeFiles/fractal-julia.dir/Debug/main.cpp.obj: CXX_COMPILER__fractal-jul
   CONFIG = Debug
   DEFINES = -DFMT_SHARED -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles\fractal-julia.dir\Debug\main.cpp.obj.d
-  FLAGS = -mavx2 -g
+  FLAGS = -mavx2 -fopenmp -g
   INCLUDES = -isystem C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\Debug
   OBJECT_FILE_DIR = CMakeFiles\fractal-julia.dir\Debug
@@ -77,7 +77,7 @@ build CMakeFiles/fractal-julia.dir/Debug/fractal_serial.cpp.obj: CXX_COMPILER__f
   CONFIG = Debug
   DEFINES = -DFMT_SHARED -DCMAKE_INTDIR=\"Debug\"
   DEP_FILE = CMakeFiles\fractal-julia.dir\Debug\fractal_serial.cpp.obj.d
-  FLAGS = -mavx2 -g
+  FLAGS = -mavx2 -fopenmp -g
   INCLUDES = -isystem C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\Debug
   OBJECT_FILE_DIR = CMakeFiles\fractal-julia.dir\Debug
@@ -93,11 +93,10 @@ build CMakeFiles/fractal-julia.dir/Debug/fractal_serial.cpp.obj: CXX_COMPILER__f
 
 build Debug/fractal-julia.exe: CXX_EXECUTABLE_LINKER__fractal-julia_Debug CMakeFiles/fractal-julia.dir/Debug/palette.cpp.obj CMakeFiles/fractal-julia.dir/Debug/fractal_simd.cpp.obj CMakeFiles/fractal-julia.dir/Debug/main.cpp.obj CMakeFiles/fractal-julia.dir/Debug/fractal_serial.cpp.obj | C$:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libfmtd.dll.a C$:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libsfml-network-d.a C$:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libsfml-graphics-d.a C$:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libsfml-window-d.a C$:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libsfml-system-d.a
   CONFIG = Debug
-  FLAGS = -mavx2 -g
-  LINK_FLAGS = -static-libgcc -static-libstdc++
+  FLAGS = -mavx2 -fopenmp -g
   LINK_LIBRARIES = C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libfmtd.dll.a  C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libsfml-network-d.a  C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libsfml-graphics-d.a  C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libsfml-window-d.a  C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/lib/libsfml-system-d.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\Debug
-  POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\tools\prog-paralela\fractal-julia\build && C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/tools/vcpkg-2026.03.18/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary C:/tools/prog-paralela/fractal-julia/build/Debug/fractal-julia.exe -installedDir C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin -OutVariable out && cd /D C:\tools\prog-paralela\fractal-julia\build && "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libfmtd.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/sfml-network-d-3.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/sfml-graphics-d-3.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/sfml-window-d-3.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/sfml-system-d-3.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libFLAC++.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libFLAC.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libbrotlicommon.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libbrotlidec.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libbrotlienc.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libbz2d.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libfmtd.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libfreetyped.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libogg.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libpng16d.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libvorbis.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libvorbisenc.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libvorbisfile.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/libzlibd1.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/sfml-audio-d-3.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/sfml-graphics-d-3.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/sfml-network-d-3.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/sfml-system-d-3.dll C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin/sfml-window-d-3.dll C:/tools/mingw64/bin/libgcc_s_seh-1.dll C:/tools/mingw64/bin/libstdc++-6.dll C:/tools/mingw64/bin/libwinpthread-1.dll C:/tools/prog-paralela/fractal-julia/build/Debug"
+  POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\tools\prog-paralela\fractal-julia\build && C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/tools/vcpkg-2026.03.18/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary C:/tools/prog-paralela/fractal-julia/build/Debug/fractal-julia.exe -installedDir C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/debug/bin -OutVariable out"
   PRE_LINK = cd .
   TARGET_FILE = Debug\fractal-julia.exe
   TARGET_IMPLIB = Debug\libfractal-julia.dll.a
