@@ -4,6 +4,11 @@
 #include <complex>
 #include "fractal_serial.h"
 #include "fractal_simd.h"
+#include "fractal_openmp.h"
+#include "palette.h"
+#ifdef _OPENMP
+#include <omp.h>
+#endif
 
 #ifdef _WIN32
     #include <windows.h>
@@ -30,7 +35,9 @@ uint16_t* texture_buffer = nullptr;
 enum runtime_type {
     SERIAL_1=0,
     SERIAL_2,
-    SIMD
+    SIMD,
+    OPENMP,
+    PARALLEL_FOR
 };
 
 int main() {
@@ -60,7 +67,7 @@ int main() {
         text.setPosition({10,10});
         text.setStyle(sf::Text::Bold);
 
-        std::string options = "Options: [1] Serial 1 [2] Serial 2 [3] SIMD | Up/Down: Change iterations";
+        std::string options = "Options: [1] Serial 1 [2] Serial 2 [3] SIMD [4] OpenMP [5] Parallel For | Up/Down: Change iterations";
         sf::Text textOptions(font, options, 20);
         textOptions.setStyle(sf::Text::Bold);
         textOptions.setFillColor(sf::Color::White);
@@ -104,23 +111,59 @@ int main() {
                 case sf::Keyboard::Scan::Num3:
                     r_type = runtime_type::SIMD;
                     break;
+                case sf::Keyboard::Scan::Num4:
+                    r_type = runtime_type::OPENMP;
+                    break;
+                case sf::Keyboard::Scan::Num5:
+                    r_type = runtime_type::PARALLEL_FOR;
+                    break;
                 }
-                
+                std::memset(pixel_buffer, 0, WIDTH * HEIGHT * sizeof(uint32_t)); //limpiar el buffer de pixeles para evitar artefactos al cambiar de modo o iteraciones
             }
         }
 
         //Crear la textura
         std::string mode = "";
+        std::string paletteName = "";
+        std::string threadInfo = "";
         if(r_type == runtime_type::SERIAL_1) {
+            color_ramp = color_ramp; //paleta por defecto (no cambia)
+            paletteName = "Default";
             julia_serial_1(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
             mode = "Serial 1";
         } else if(r_type == runtime_type::SERIAL_2) {
+            color_ramp = color_ramp_blue;
+            paletteName = "Blue";
             julia_serial_2(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
             mode = "Serial 2";
         }
         else if(r_type == runtime_type::SIMD) {
+            color_ramp = color_ramp_green;
+            paletteName = "Green";
             julia_simd(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
             mode = "SIMD";
+        }
+        else if(r_type == runtime_type::OPENMP) {
+            color_ramp = color_ramp_mono;
+            paletteName = "Mono";
+            julia_openmp_regiones(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
+            mode = "OpenMP (regions)";
+            #ifdef _OPENMP
+            threadInfo = fmt::format("Threads: {}", omp_get_max_threads());
+            #else
+            threadInfo = "Threads: 1";
+            #endif
+        }
+        else if(r_type == runtime_type::PARALLEL_FOR) {
+            color_ramp = color_ramp_mono;
+            paletteName = "Mono";
+            julia_openmp_for(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
+            mode = "OpenMP (parallel for)";
+            #ifdef _OPENMP
+            threadInfo = fmt::format("Threads: {}", omp_get_max_threads());
+            #else
+            threadInfo = "Threads: 1";
+            #endif
         }
 
         texture.update((const uint8_t *)pixel_buffer); //BUFFER DE TEXTURAS QUE REQUIERE
@@ -135,7 +178,7 @@ int main() {
         }
 
         //Actualizar el titulo de la ventana con el FPS
-        auto msg = fmt::format("Julia set Iterations: {} FPS: {} Mode: {}", max_iteraciones, fps, mode);
+        auto msg = fmt::format("Julia set Iterations: {} FPS: {} Mode: {} Palette: {} {}", max_iteraciones, fps, mode, paletteName, threadInfo);
         text.setString(msg);
 
         // Clear screen

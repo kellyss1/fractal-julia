@@ -47,3 +47,63 @@ std::vector<uint32_t> color_ramp = {
     bswap32(0xA10026FF), //15
     bswap32(0x800026FF)  //16
 };
+
+// Paleta 2: tonos azules/cian
+std::vector<uint32_t> color_ramp_blue = {
+    bswap32(0xFF001F3F),
+    bswap32(0xFF002B66),
+    bswap32(0xFF003B99),
+    bswap32(0xFF004CFF),
+    bswap32(0xFF1A6EFF),
+    bswap32(0xFF338CFF),
+    bswap32(0xFF66B3FF),
+    bswap32(0xFF99CCFF),
+    bswap32(0xFFCCEFFF),
+    bswap32(0xFFE6F7FF),
+    bswap32(0xFFFFFFFF),
+    bswap32(0xFFDFFAFF),
+    bswap32(0xFFBFEFFF),
+    bswap32(0xFF9FDFFF),
+    bswap32(0xFF7FBFFF),
+    bswap32(0xFF5F9FFF)
+};
+
+// Paleta 3: verdes
+std::vector<uint32_t> color_ramp_green = {
+    bswap32(0xFF003300),
+    bswap32(0xFF004400),
+    bswap32(0xFF006600),
+    bswap32(0xFF008800),
+    bswap32(0xFF00AA00),
+    bswap32(0xFF33CC33),
+    bswap32(0xFF66DD66),
+    bswap32(0xFF99EE99),
+    bswap32(0xFFCCFFCC),
+    bswap32(0xFFE6FFE6),
+    bswap32(0xFFF0FFF0),
+    bswap32(0xFFFFFFFF),
+    bswap32(0xFFE6FFF2),
+    bswap32(0xFFCCFFE6),
+    bswap32(0xFF99FFCC),
+    bswap32(0xFF66FF99)
+};
+
+// Paleta 4: escala de grises
+std::vector<uint32_t> color_ramp_mono = {
+    bswap32(0xFF000000),
+    bswap32(0xFF111111),
+    bswap32(0xFF222222),
+    bswap32(0xFF333333),
+    bswap32(0xFF444444),
+    bswap32(0xFF555555),
+    bswap32(0xFF666666),
+    bswap32(0xFF777777),
+    bswap32(0xFF888888),
+    bswap32(0xFF999999),
+    bswap32(0xFFAAAAAA),
+    bswap32(0xFFBBBBBB),
+    bswap32(0xFFCCCCCC),
+    bswap32(0xFFDDDDDD),
+    bswap32(0xFFEEEEEE),
+    bswap32(0xFFFFFFFF)
+};
