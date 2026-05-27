@@ -51,8 +51,6 @@ build CMakeFiles/fractal-julia.dir/RelWithDebInfo/palette.cpp.obj: CXX_COMPILER_
   INCLUDES = -isystem C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
   OBJECT_FILE_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles\fractal-julia.dir\RelWithDebInfo\
-  TARGET_PDB = RelWithDebInfo\fractal-julia.pdb
   TARGET_SUPPORT_DIR = CMakeFiles\fractal-julia.dir
 
 build CMakeFiles/fractal-julia.dir/RelWithDebInfo/fractal_simd.cpp.obj: CXX_COMPILER__fractal-julia_unscanned_RelWithDebInfo C$:/tools/prog-paralela/fractal-julia/fractal_simd.cpp || cmake_object_order_depends_target_fractal-julia_RELWITHDEBINFO
@@ -63,8 +61,6 @@ build CMakeFiles/fractal-julia.dir/RelWithDebInfo/fractal_simd.cpp.obj: CXX_COMP
   INCLUDES = -isystem C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
   OBJECT_FILE_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles\fractal-julia.dir\RelWithDebInfo\
-  TARGET_PDB = RelWithDebInfo\fractal-julia.pdb
   TARGET_SUPPORT_DIR = CMakeFiles\fractal-julia.dir
 
 build CMakeFiles/fractal-julia.dir/RelWithDebInfo/main.cpp.obj: CXX_COMPILER__fractal-julia_unscanned_RelWithDebInfo C$:/tools/prog-paralela/fractal-julia/main.cpp || cmake_object_order_depends_target_fractal-julia_RELWITHDEBINFO
@@ -75,8 +71,6 @@ build CMakeFiles/fractal-julia.dir/RelWithDebInfo/main.cpp.obj: CXX_COMPILER__fr
   INCLUDES = -isystem C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
   OBJECT_FILE_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles\fractal-julia.dir\RelWithDebInfo\
-  TARGET_PDB = RelWithDebInfo\fractal-julia.pdb
   TARGET_SUPPORT_DIR = CMakeFiles\fractal-julia.dir
 
 build CMakeFiles/fractal-julia.dir/RelWithDebInfo/fractal_serial.cpp.obj: CXX_COMPILER__fractal-julia_unscanned_RelWithDebInfo C$:/tools/prog-paralela/fractal-julia/fractal_serial.cpp || cmake_object_order_depends_target_fractal-julia_RELWITHDEBINFO
@@ -87,8 +81,6 @@ build CMakeFiles/fractal-julia.dir/RelWithDebInfo/fractal_serial.cpp.obj: CXX_CO
   INCLUDES = -isystem C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
   OBJECT_FILE_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles\fractal-julia.dir\RelWithDebInfo\
-  TARGET_PDB = RelWithDebInfo\fractal-julia.pdb
   TARGET_SUPPORT_DIR = CMakeFiles\fractal-julia.dir
 
 build CMakeFiles/fractal-julia.dir/RelWithDebInfo/fractal_openmp.cpp.obj: CXX_COMPILER__fractal-julia_unscanned_RelWithDebInfo C$:/tools/prog-paralela/fractal-julia/fractal_openmp.cpp || cmake_object_order_depends_target_fractal-julia_RELWITHDEBINFO
@@ -99,8 +91,6 @@ build CMakeFiles/fractal-julia.dir/RelWithDebInfo/fractal_openmp.cpp.obj: CXX_CO
   INCLUDES = -isystem C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/include
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
   OBJECT_FILE_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles\fractal-julia.dir\RelWithDebInfo\
-  TARGET_PDB = RelWithDebInfo\fractal-julia.pdb
   TARGET_SUPPORT_DIR = CMakeFiles\fractal-julia.dir
 
 
@@ -118,10 +108,9 @@ build RelWithDebInfo/fractal-julia.exe: CXX_EXECUTABLE_LINKER__fractal-julia_Rel
   OBJECT_DIR = CMakeFiles\fractal-julia.dir\RelWithDebInfo
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\tools\prog-paralela\fractal-julia\build && C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/tools/vcpkg-2026.03.18/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary C:/tools/prog-paralela/fractal-julia/build/RelWithDebInfo/fractal-julia.exe -installedDir C:/tools/vcpkg-2026.03.18/installed/x64-mingw-dynamic/bin -OutVariable out"
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\fractal-julia.dir\RelWithDebInfo\
   TARGET_FILE = RelWithDebInfo\fractal-julia.exe
   TARGET_IMPLIB = RelWithDebInfo\libfractal-julia.dll.a
-  TARGET_PDB = RelWithDebInfo\fractal-julia.pdb
+  TARGET_PDB = fractal-julia.exe.dbg
   TARGET_SUPPORT_DIR = CMakeFiles\fractal-julia.dir
 
 build fractal-julia.exe$:RelWithDebInfo: phony RelWithDebInfo/fractal-julia.exe
