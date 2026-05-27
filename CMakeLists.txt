@@ -20,15 +20,6 @@ add_executable(
     fractal_serial.cpp
     fractal_openmp.cpp)
 
-if (WIN32)
-    add_custom_command(TARGET fractal-julia POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $<TARGET_RUNTIME_DLLS:fractal-julia>
-            $<TARGET_FILE_DIR:fractal-julia>
-        COMMAND_EXPAND_LISTS
-    )
-endif()
-
 
 target_link_libraries(fractal-julia PRIVATE 
 fmt::fmt

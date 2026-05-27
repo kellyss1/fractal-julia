@@ -6,6 +6,9 @@
     "CMAKE_CXX_COMPILER": "C:/tools/mingw64/bin/g++.exe",
     "CMAKE_MAKE_PROGRAM": "C:/tools/mingw64/bin/ninja.exe",
     "CMAKE_TOOLCHAIN_FILE": "C:/tools/vcpkg-2026.03.18/scripts/buildsystems/vcpkg.cmake",
-    "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"
+    "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic",
+
+    "VCPKG_HOST_TRIPLET": "x64-mingw-dynamic",
+    "CMAKE_DEBUG_POSTFIX": "-d"
   }
 }

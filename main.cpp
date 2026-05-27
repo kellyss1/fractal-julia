@@ -11,40 +11,42 @@
 #endif
 
 #ifdef _WIN32
-    #include <windows.h>
+#include <windows.h>
 #endif
 
-//dimesion de la imagen
+// dimesion de la imagen
 #define WIDTH 1600
 #define HEIGHT 900
 
-//parametros de la imagen
+// parametros de la imagen
 int max_iteraciones = 10;
 
-double  x_min = -1.5;
-double  x_max = 1.5;
-double  y_min = -1.0;
-double  y_max = 1.0;
+double x_min = -1.5;
+double x_max = 1.5;
+double y_min = -1.0;
+double y_max = 1.0;
 
 std::complex<double> c(-0.7, 0.27015);
 
 // textura
-uint32_t* pixel_buffer = nullptr;
-uint16_t* texture_buffer = nullptr;
+uint32_t *pixel_buffer = nullptr;
+uint16_t *texture_buffer = nullptr;
 
-enum runtime_type {
-    SERIAL_1=0,
+enum runtime_type
+{
+    SERIAL_1 = 0,
     SERIAL_2,
     SIMD,
     OPENMP,
     PARALLEL_FOR
 };
 
-int main() {
+int main()
+{
 
     runtime_type r_type = runtime_type::SERIAL_1;
 
-    //Inicializamos el buffer de pixeles y la textura
+    // Inicializamos el buffer de pixeles y la textura
     pixel_buffer = new uint32_t[WIDTH * HEIGHT];
     texture_buffer = new uint16_t[WIDTH * HEIGHT];
 
@@ -52,55 +54,59 @@ int main() {
 
     sf::RenderWindow window(sf::VideoMode({WIDTH, HEIGHT}), "Julia set - SMFL");
 
-    #ifdef _WIN32
+#ifdef _WIN32
     HWND hWnd = window.getNativeHandle();
     ShowWindow(hWnd, SW_MAXIMIZE);
-    #endif
+#endif
 
+    sf::Texture texture({WIDTH, HEIGHT});
+    sf::Sprite sprite(texture);
 
-        sf::Texture texture({WIDTH, HEIGHT});
-        sf::Sprite sprite(texture);
+    sf::Font font("Arial.ttf");
+    sf::Text text(font, "Julia Set", 24);
+    text.setFillColor(sf::Color::White);
+    text.setPosition({10, 10});
+    text.setStyle(sf::Text::Bold);
 
-        sf::Font font("Arial.ttf");
-        sf::Text text(font, "Julia Set", 24);
-        text.setFillColor(sf::Color::White);
-        text.setPosition({10,10});
-        text.setStyle(sf::Text::Bold);
+    std::string options = "Options: [1] Serial 1 [2] Serial 2 [3] SIMD [4] OpenMP [5] Parallel For | Up/Down: Change iterations";
+    sf::Text textOptions(font, options, 20);
+    textOptions.setStyle(sf::Text::Bold);
+    textOptions.setFillColor(sf::Color::White);
+    textOptions.setPosition({10, window.getView().getSize().y - 40});
 
-        std::string options = "Options: [1] Serial 1 [2] Serial 2 [3] SIMD [4] OpenMP [5] Parallel For | Up/Down: Change iterations";
-        sf::Text textOptions(font, options, 20);
-        textOptions.setStyle(sf::Text::Bold);
-        textOptions.setFillColor(sf::Color::White);
-        textOptions.setPosition({10, window.getView().getSize().y - 40});
+    // FPS
+    int frames = 0;
+    int fps = 0;
+    sf::Clock clock;
 
-        //FPS
-        int frames = 0;
-        int fps = 0;
-        sf::Clock clock;
-
-        // Start the game loop
+    // Start the game loop
     while (window.isOpen())
     {
         // Process events
         while (const std::optional event = window.pollEvent())
         {
             // Close window: exit
-            if (event->is<sf::Event::Closed>()) {
+            if (event->is<sf::Event::Closed>())
+            {
                 window.close();
-            } else if (event->is<sf::Event::KeyReleased>()) {
+            }
+            else if (event->is<sf::Event::KeyReleased>())
+            {
                 auto evt = event->getIf<sf::Event::KeyReleased>();
-                if (!evt) {
+                if (!evt)
+                {
                     continue;
                 }
 
-                switch (evt->scancode) 
+                switch (evt->scancode)
                 {
                 case sf::Keyboard::Scan::Up:
                     max_iteraciones += 10;
                     break;
                 case sf::Keyboard::Scan::Down:
                     max_iteraciones -= 10;
-                    if(max_iteraciones < 10) max_iteraciones = 10;
+                    if (max_iteraciones < 10)
+                        max_iteraciones = 10;
                     break;
                 case sf::Keyboard::Scan::Num1:
                     r_type = runtime_type::SERIAL_1;
@@ -118,66 +124,73 @@ int main() {
                     r_type = runtime_type::PARALLEL_FOR;
                     break;
                 }
-                std::memset(pixel_buffer, 0, WIDTH * HEIGHT * sizeof(uint32_t)); //limpiar el buffer de pixeles para evitar artefactos al cambiar de modo o iteraciones
+                std::memset(pixel_buffer, 0, WIDTH * HEIGHT * sizeof(uint32_t)); // limpiar el buffer de pixeles para evitar artefactos al cambiar de modo o iteraciones
             }
         }
 
-        //Crear la textura
+        // Crear la textura
         std::string mode = "";
         std::string paletteName = "";
         std::string threadInfo = "";
-        if(r_type == runtime_type::SERIAL_1) {
-            color_ramp = color_ramp; //paleta por defecto (no cambia)
+        if (r_type == runtime_type::SERIAL_1)
+        {
+            color_ramp = color_ramp; // paleta por defecto (no cambia)
             paletteName = "Default";
             julia_serial_1(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
             mode = "Serial 1";
-        } else if(r_type == runtime_type::SERIAL_2) {
+        }
+        else if (r_type == runtime_type::SERIAL_2)
+        {
             color_ramp = color_ramp_blue;
             paletteName = "Blue";
             julia_serial_2(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
             mode = "Serial 2";
         }
-        else if(r_type == runtime_type::SIMD) {
+        else if (r_type == runtime_type::SIMD)
+        {
             color_ramp = color_ramp_green;
             paletteName = "Green";
             julia_simd(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
             mode = "SIMD";
         }
-        else if(r_type == runtime_type::OPENMP) {
+        else if (r_type == runtime_type::OPENMP)
+        {
             color_ramp = color_ramp_mono;
             paletteName = "Mono";
             julia_openmp_regiones(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
             mode = "OpenMP (regions)";
-            #ifdef _OPENMP
+#ifdef _OPENMP
             threadInfo = fmt::format("Threads: {}", omp_get_max_threads());
-            #else
+#else
             threadInfo = "Threads: 1";
-            #endif
+#endif
         }
-        else if(r_type == runtime_type::PARALLEL_FOR) {
+        else if (r_type == runtime_type::PARALLEL_FOR)
+        {
             color_ramp = color_ramp_mono;
             paletteName = "Mono";
             julia_openmp_for(x_min, x_max, y_min, y_max, WIDTH, HEIGHT, pixel_buffer);
             mode = "OpenMP (parallel for)";
-            #ifdef _OPENMP
+#ifdef _OPENMP
             threadInfo = fmt::format("Threads: {}", omp_get_max_threads());
-            #else
+#else
             threadInfo = "Threads: 1";
-            #endif
+#endif
         }
 
-        texture.update((const uint8_t *)pixel_buffer); //BUFFER DE TEXTURAS QUE REQUIERE
+        texture.update((const uint8_t *)pixel_buffer); // BUFFER DE TEXTURAS QUE REQUIERE
 
-        //Contar FPS
+        // Contar FPS
         frames++;
 
-        if(clock.getElapsedTime().asSeconds() >= 1.0f) {
+        if (clock.getElapsedTime().asSeconds() >= 1.0f)
+        {
             fps = frames;
-            frames =0;
+            frames = 0;
             clock.restart();
         }
 
-        //Actualizar el titulo de la ventana con el FPS
+        // Actualizar el titulo de la ventana con el FPS
         auto msg = fmt::format("Julia set Iterations: {} FPS: {} Mode: {} Palette: {} {}", max_iteraciones, fps, mode, paletteName, threadInfo);
         text.setString(msg);
 
